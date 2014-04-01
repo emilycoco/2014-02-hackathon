@@ -1,0 +1,10 @@
+snippets
+
+svg.append("defs")
+   .append("pattern")
+   .attr("id", "bg")
+   .append("image")
+   .attr("xlink:href", "image.jpg");
+
+svg.append("rect")
+   .attr("fill", "url(#bg)");
