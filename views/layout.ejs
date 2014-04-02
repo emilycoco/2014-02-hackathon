@@ -2,7 +2,7 @@
 <html ng-app="musicApp">
   <head>
     <meta charset="utf-8" />
-    <title>Shortly</title>
+    <title>Karaoke</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="/lib/jquery.js"></script>
     <script src="/lib/underscore.js"></script>
@@ -15,8 +15,8 @@
   </head>
 
   <body ng-controller="musicController">
-    <h1>Music</h1>
-      <div ng-controller= "getArtist">
+    <h1>Karaoke</h1>
+      <div ng-controller= "getArtist" class="search">
         <form>
         <div>
           <label for="artist">Song:</label>
@@ -26,7 +26,7 @@
           <input ng-click="getVideo(artist.name)" type="submit" value="search">
         </div>
     </form>
-    <p>Artist: {{artist.name}}</p>
+    <p>Add To Queue: {{artist.name}}</p>
     </div>
       <div id="player"></div>
 
@@ -43,8 +43,8 @@
       var player;
       function onYouTubeIframeAPIReady() {
         player = new YT.Player('player', {
-          height: '300',
-          width: '500',
+          height: '400',
+          width: '700',
           events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
@@ -54,13 +54,9 @@
 
       // 4. The API will call this function when the video player is ready.
       function onPlayerReady(event) {
-        player.cueVideoById('1TffpkE2GU4');
-        player.cueVideoById("2dV1ZOyrK7Y");
+        player.cuePlaylist(playList, 0);
       }
 
-      // 5. The API calls this function when the player's state changes.
-      //    The function indicates that when playing a video (state=1),
-      //    the player should play for six seconds and then stop.
       var done = false;
       function onPlayerStateChange(event) {
         if (event.data == YT.PlayerState.PLAYING && !done) {
@@ -72,9 +68,33 @@
         player.stopVideo();
       }
     </script>
-    <div ng-controller="getLyrics">
+    <div ng-controller="getLyrics"  class="lyrics">
+      <p ng-model="lyrics">
       <h1>Lyrics</h1>
-      <p ng-model="lyrics">{{song.lyrics}}</p>
+        Dark Star
+        </br>
+        [Verse 1: Jaymes Young]</br>
+        I've looked a long time to find you</br>
+        I drifted through the universe, just to lay beside you</br>
+        Anywhere you want me to take you, I'll go (yeah)</br>
+        But there's things about me that you just don't know</br>
+        </br>
+        [Hook]</br>
+        If I told you where I've been</br>
+        Would you still call me baby?</br>
+        And if I told you everything</br>
+        Would you call me crazy?</br>
+        </br>
+        Cause baby I'm a dark star, dark star, ohh (x2)</br>
+        </br>
+        [Verse 2: Jaymes Young]</br>
+        My heart was born out of the fire</br>
+        I lost love a thousand years ago</br>
+        And still, I can't find her</br>
+        Now I don't love like I used to</br>
+        But I've got stories I could tell you,</br>
+        If I want to</br>
+      </p>
     </div>
   </body>
 </html>

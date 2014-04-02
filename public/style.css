@@ -1,7 +1,8 @@
 body {
-  margin: 0;
+  margin: 5%;
   margin-top: 10px;
-  font-family: arial, sans-serif;
+  font-family: verdana, sans-serif;
+  color: #FFF;
   background-image: url("/disco.jpg");
 }
 
@@ -135,4 +136,16 @@ form input[type=text], form input[type=password] {
 
 .creator .message {
   clear: both;
+}
+
+.lyrics {
+  float: right;
+  width: 30%;
+  margin-top: -500px;
+  font-size: 18px;
+}
+
+.search {
+  float: left;
+  width: 90%;
 }
