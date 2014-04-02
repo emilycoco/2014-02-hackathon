@@ -19,8 +19,8 @@ musicApp.controller('getArtist', ['$scope', 'getData', function($scope, getData)
               $video = $xml.find('videoid');
               videoId = $video[0].innerHTML
               console.log(videoId);
-              $scope.playList.push(videoId);
-              console.log($scope.playList);
+              playList.push(videoId);
+              console.log(playList);
           });
       }
       $scope.text =  $scope.artist.name;
